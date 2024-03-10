@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.UUID;
+
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 
 @Data
@@ -18,10 +20,11 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 @Document(collection = "Employee")
 public class Employee {
     @Id
-    private String id;
+    private String id = UUID.randomUUID().toString().replace("-", "");
     private String firstName;
     private String lastName;
     private String designation;
     private String department;
+    private String phone;
     private String photoUrl;
 }
